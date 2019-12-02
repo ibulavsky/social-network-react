@@ -1,0 +1,48 @@
+/*.content {*/
+    /*display: grid;*/
+    /*grid-template-columns: 2fr 5fr;*/
+    /*grid-gap: 20px;*/
+    /*background-color: whitesmoke;*/
+/*}*/
+.dialogs {
+    display: grid;
+    grid-template-columns: 1fr 10fr ;
+    }
+
+.dialogsItems {
+    padding: 10px;
+    align-content: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    /*background: gold;*/
+    color: navy;
+    text-align: center;
+    /*font-size: 25px;*/
+    }
+
+.dialogsItems .active{
+    color: gold;
+
+}
+
+.messages {
+    background-color: #f1f1f1f1;
+    color: black;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+}
+.message {
+    border: 2px solid burlywood ;
+    border-radius: 5px;
+    width: 350px;
+    text-align: justify;
+}
+
+.message img {
+    alignment: right;
+    height: 60px;
+    width: 60px;
+    margin-right: 20px;
+    border-radius: 30%;
+}

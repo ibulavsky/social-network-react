@@ -1,0 +1,9 @@
+.descriptionProfile {
+    border: black;
+    border-radius: 25px;
+    border-width: 5px;
+}
+
+.name {
+    font-weight: bold;
+}

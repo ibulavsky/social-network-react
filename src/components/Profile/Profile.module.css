@@ -1,0 +1,11 @@
+.content{
+    display: grid;
+    grid-template-rows:1fr;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    /*grid-template-areas: "foto userData" "input input" "posts posts";*/
+    /*grid-gap: 10px;*/
+    /*color: #444;*/
+    /*background-color: whitesmoke;*/
+/*}*/
+}

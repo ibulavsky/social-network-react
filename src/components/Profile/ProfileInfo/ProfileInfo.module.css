@@ -1,0 +1,24 @@
+/*.cont{*/
+    /*display: grid;*/
+    /*grid-template-columns: 1fr 1fr;*/
+    /*grid-template-rows: 150px 150px 1fr;*/
+    /*grid-template-areas: "foto userData" "input input" "posts posts";*/
+    /*grid-gap: 10px;*/
+    /*color: #444;*/
+    /*background-color: whitesmoke;*/
+/*}*/
+
+
+.header {
+    display: grid;
+    grid-column: 1/3 ;
+    width: 100%;
+    height: 150px;
+}
+
+.profileInfo {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr;
+    }

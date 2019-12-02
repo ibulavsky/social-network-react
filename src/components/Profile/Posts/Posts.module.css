@@ -1,0 +1,31 @@
+.item {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px 1fr;
+}
+
+.posts {
+    display: grid;
+    width: 100%;
+}
+
+.input {
+    display: grid;
+    width: 100%;
+    height: 100px;
+    grid-column: 1/2;
+}
+
+.input textarea {
+    width: 98.5%;
+    height: 100px;
+}
+
+button {
+    background-color: #ffffff;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 24px;
+}

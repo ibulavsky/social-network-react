@@ -1,0 +1,17 @@
+.myPost {
+
+    width: 100%;
+    background: deepskyblue;
+    border: 2px solid #666666;
+    border-radius: 10px;
+}
+
+.like {
+    alignment: right;
+    background: magenta;
+}
+img {
+    height: 60px;
+    width: 60px;
+    border-radius: 15px;
+}

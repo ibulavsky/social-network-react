@@ -1,0 +1,31 @@
+.header {
+    grid-area: h;
+    background-color: navy;
+    text-align: center;
+    font-size: 50px;
+    color: white;
+}
+
+.header img {
+    width: 100px;
+}
+
+.loginBlock {
+    float: right;
+    margin: 0 25px;
+
+}
+
+.loginBlock a {
+    color: white;
+    font-family: "Droid Sans";
+    font-style: italic;
+    font-size: 20px;
+}
+
+.loginBlock span {
+    color: white;
+    font-family: "Droid Sans";
+    font-style: italic;
+    font-size: 20px;
+}
