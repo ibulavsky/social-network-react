@@ -2,7 +2,7 @@ import {authAPI} from "../api/api";
 import {stopSubmit} from 'redux-form'
 import {getAuthUserData} from "./auth-reducer";
 
-export const INITIALIZED_SUCCESS = 'INITIALIZED_SUCCESS';
+export const INITIALIZED_SUCCESS = 'SOCIAL-NETWORK/APP-REDUCER/INITIALIZED_SUCCESS';
 
 const initialState = {
     initialized: false,

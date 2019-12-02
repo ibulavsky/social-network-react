@@ -1,10 +1,10 @@
 import {profileAPI, usersAPI} from "../api/api";
 
 
-export const ADD_POST = "ADD-POST";
-export const SET_USER_PROFILE = 'SET_USER_PROFILE';
-export const SET_STATUS = 'SET_STATUS';
-export const DELETE_POST = 'DELETE_POST';
+export const ADD_POST = "SOCIAL-NETWORK/PROFILE-REDUCER/ADD-POST";
+export const SET_USER_PROFILE = 'SOCIAL-NETWORK/PROFILE-REDUCER/SET_USER_PROFILE';
+export const SET_STATUS = 'SOCIAL-NETWORK/PROFILE-REDUCER/SET_STATUS';
+export const DELETE_POST = 'SOCIAL-NETWORK/PROFILE-REDUCER/DELETE_POST';
 
 const initialState = {
     postsData: [
@@ -63,37 +63,25 @@ export const setStatus = (status) => ({type: SET_STATUS, status});
 export const deletePost = (postId) => ({type: DELETE_POST, postId});
 
 // THUNK CREATOR:
-export const getUserProfile = (userId) => {
-    return (dispatch) => {
-        usersAPI.getProfile(userId)
-            .then(response => {
-                dispatch(setUserProfile(response.data));
-            })
-    }
-};
-export const getStatus = (userId) => {
-    return (dispatch) => {
-        profileAPI.getStatus(userId)
-            .then(response => {
-                dispatch(setStatus(response.data));
-            })
-    }
-};
-export const updateStatus = (status) => (dispatch) => {
-    profileAPI.updateStatus(status)
-        .then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(setStatus(status));
-            }
-        })
-};
+export const getUserProfile = (userId) => async (dispatch) => {
+    const response = await usersAPI.getProfile(userId)
+    dispatch(setUserProfile(response.data));
+}
 
-export const addPhoto = (myPhoto) => (dispatch) => {
-    profileAPI.downloadPhoto(myPhoto)
-        .then(response => {
-            if (response.data.data.resultCode === 0) {
-                console.log('photo', response.data.data.photos.large)
+export const getStatus = (userId) => async (dispatch) => {
+    const response = await profileAPI.getStatus(userId)
+    dispatch(setStatus(response.data));
+}
+export const updateStatus = (status) => async (dispatch) => {
+    const response = await profileAPI.updateStatus(status)
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status));
+    }
+}
 
-            }
-        })
-};
+export const addPhoto = (myPhoto) => async (dispatch) => {
+    const response = await profileAPI.downloadPhoto(myPhoto)
+    if (response.data.data.resultCode === 0) {
+        console.log('photo', response.data.data.photos.large)
+    }
+}

@@ -1,4 +1,4 @@
-export const SEND_MESSAGE = 'SEND-MESSAGE';
+export const SEND_MESSAGE = 'SOCIAL-NETWORK/DIALOGS-REDUCER/SEND-MESSAGE';
 const initialState = {
     messagesData: [
         {id: 1, message: 'Hello!'},
