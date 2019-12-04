@@ -1,13 +1,13 @@
 import React from 'react';
 import s from "./AboutYou.module.css";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const AboutYou = (props) => {
     let objContacts = props.profileData.contacts;
     let arrContacts = [];
-    for (let q in objContacts) {
-        if (objContacts[q] !== null) {
-            arrContacts.push(`${q} : ${objContacts[q]}`)
+    for (let key in objContacts) {
+        if (!objContacts[key]) {
+            arrContacts.push(`${key} : ${objContacts[key]}`)
         }
     }
     return (

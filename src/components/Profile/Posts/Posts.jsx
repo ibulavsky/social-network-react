@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Posts.module.css';
 import Post from "./Post/Post";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import {Field, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {Textarea} from "../../common/FormsControl/FormsControls";
@@ -17,7 +17,6 @@ const Posts = React.memo((props) => {
                 <PostsFormRedux onSubmit={onAddPost}/>
                 <div className={s.posts}>
                     {MyPosts}
-
                 </div>
             </div>
         )

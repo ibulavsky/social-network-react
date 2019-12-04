@@ -1,6 +1,6 @@
 import React from 'react';
 // import s from './Profile.module.css';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 
 const Sidebar = (props) => {

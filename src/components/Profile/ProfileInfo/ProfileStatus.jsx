@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import s from './ProfileInfo.module.css';
 
 class ProfileStatus extends Component {
+
     state = {
         editMode: false,
         status: this.props.status,
-    };
-
+    }
 
     componentDidUpdate(prevProps) {
         if (prevProps.status !== this.props.status) {
@@ -14,35 +14,22 @@ class ProfileStatus extends Component {
         }
     }
 
-    activateEditMode = () => {
-        this.setState({
-                editMode: true
-            }
-        )
-    };
+    activateEditMode = () => this.setState({editMode: true});
 
     deactivateEditMode = () => {
-        this.setState({
-                editMode: false
-            }
-        );
-        this.props.updateStatus(this.state.status);
-    };
+        this.setState({editMode: false})
+        this.props.updateStatus(this.state.status)
+    }
 
-    onStatusChange = (e) => {
-        this.setState({
-                status: e.currentTarget.value
-            }
-        )
-    };
+    onStatusChange = (e) => this.setState({status: e.currentTarget.value});
 
-    render() {
+    render({status}) {
         return (
             <div className={s.status}>
                 {!this.state.editMode &&
                 <div>
                            <span onDoubleClick={this.activateEditMode}>
-                               {this.props.status || "no-status"}
+                               {status || "no-status"}
                            </span>
                 </div>
                 }
@@ -60,5 +47,5 @@ class ProfileStatus extends Component {
     }
 }
 
-export default ProfileStatus;
+export default ProfileStatus
 

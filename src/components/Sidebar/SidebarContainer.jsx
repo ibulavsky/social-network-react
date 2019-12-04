@@ -1,7 +1,6 @@
-import React from 'react';
+// import React from 'react';
 import {connect} from 'react-redux'
 // import s from './Profile.module.css';
-import PropTypes from 'prop-types';
 import Sidebar from "./Sidebar";
 
 

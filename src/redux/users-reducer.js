@@ -59,7 +59,7 @@ const usersReducer = (state = initialState, action) => {
                 ...state,
                 followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
-                    : state.followingInProgress.filter(id => id != action.userId)
+                    : state.followingInProgress.filter(id => id !== action.userId)
             }
         }
         default:
@@ -93,6 +93,7 @@ export const requestUsers = (requestPage, pageSize) => async (dispatch) => {
     dispatch(setTotalUsersCount(data.totalCount));
 }
 
+// common function for follow/unfollow event.
 const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
     dispatch(toggleIsFollowingProgress(true, userId));
     const response = await apiMethod(userId)
@@ -103,13 +104,9 @@ const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) =>
 }
 
 export const follow = (userId) => async (dispatch) => {
-    // apiMethod = usersAPI.follow.bind(usersAPI)
-    // actionCreator = followSuccess
     await followUnfollowFlow(dispatch, userId, usersAPI.follow.bind(usersAPI), followSuccess)
 }
 
 export const unfollow = (userId) => async (dispatch) => {
-    // apiMethod = usersAPI.unfollow.bind(usersAPI)
-    //  actionCreator =  unfollowSuccess
     await followUnfollowFlow(dispatch, userId, usersAPI.unfollow.bind(usersAPI), unfollowSuccess)
 }

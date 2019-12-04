@@ -1,34 +1,27 @@
 import React from 'react'
 import s from "./Users.module.css";
-import userPhoto from "../../assets/images/user.png";
 import {NavLink} from "react-router-dom";
+import Avatar from "../common/UserAvatar/Avatar.jsx"
 
-let User = ({user, followingInProgress, unfollow, follow}) => {
-    return <div>
-                    <span>
-                        <div>
-                            <NavLink to={`profile/${user.id}`}>
-                                <img alt='Avatar'
-                                     src={user.photos.small != null
-                                         ? user.photos.small : userPhoto}
-                                     className={s.userPhoto}/>
-                            </NavLink>
-                        </div>
-                        <div>
+const User = ({user, followingInProgress, unfollow, follow}) => {
+
+    const followClick = () => {
+        follow(user.id)
+    }
+    const unFollowClick = () => unfollow(user.id)
+
+    return <>
+              <span>
+                  <NavLink to={`profile/${user.id}`}>
+                                <Avatar photo={user.photos.small} styled={s.userPhoto}/>
+                  </NavLink>
+                  <div>
                      {user.followed
                          ? <button
                              disabled={followingInProgress.some(id => id === user.id)}
-                             onClick={() => {
-                                 unfollow(user.id)
-                             }
-                             }> Unfollow
-                         </button>
+                             onClick={unFollowClick}>Unfollow</button>
                          : <button disabled={followingInProgress.some(id => id === user.id)}
-                                   onClick={() => {
-                                       follow(user.id)
-                                   }
-                                   }>Follow</button>
-                     }
+                                   onClick={followClick}>Follow</button>}
                 </div>
             </span>
         <span>
@@ -37,11 +30,11 @@ let User = ({user, followingInProgress, unfollow, follow}) => {
                 <div>{user.status}</div>
             </span>
             <span>
-                <div>{'u.location.country'}</div>
-                <div>{'u.location.city'}</div>
+                <div>{`user.location.country`}</div>
+                <div>{`user.location.city`}</div>
             </span>
         </span>
-    </div>
-};
+    </>
+}
 
 export default User;
