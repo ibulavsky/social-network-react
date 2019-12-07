@@ -6,7 +6,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
-
+import {isError401} from "./redux/errors-handler"
 
 ReactDOM.render(
     <BrowserRouter>
@@ -15,7 +15,7 @@ ReactDOM.render(
         </Provider>
     </BrowserRouter>, document.getElementById('root'));
 
-
+isError401();
 
 
 // If you want your app to work offline and load faster, you can change

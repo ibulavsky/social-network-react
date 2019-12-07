@@ -54,3 +54,10 @@ export const logout = () => async (dispatch) => {
         console.error("Fail logout", response.data);
     }
 }
+
+// setHandler401(redirect401)
+//
+// export const redirect401 = (dispatch) => {
+//     alert('aaa')
+//    dispatch(setAuthUserData(null, null, null, false))
+// }

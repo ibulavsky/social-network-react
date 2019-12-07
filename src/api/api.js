@@ -8,6 +8,25 @@ const instance = axios.create({
     },
     'Content-Type': 'multipart/form-data'
 });
+
+let handler401;
+
+export const setHandler401 = (callback) => {
+    handler401 = callback;
+}
+
+instance.interceptors.response.use(response => {
+        return response
+    },
+    error => {
+        if (error.response.status === 401) {
+            handler401()
+        }
+        return Promise.reject(error);
+    }
+)
+
+
 export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`,

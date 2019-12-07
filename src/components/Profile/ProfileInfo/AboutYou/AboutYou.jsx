@@ -6,7 +6,7 @@ const AboutYou = (props) => {
     let objContacts = props.profileData.contacts;
     let arrContacts = [];
     for (let key in objContacts) {
-        if (!objContacts[key]) {
+        if (objContacts[key]) {
             arrContacts.push(`${key} : ${objContacts[key]}`)
         }
     }
@@ -25,10 +25,11 @@ const AboutYou = (props) => {
                     Description: {props.profileData.lookingForAJobDescription}
                 </div>
             </div>
-            <div>
-                contacts:
-                {arrContacts.map(c => <div>{c}</div>)}
-            </div>
+            {arrContacts.length !== 0 ?
+                <div>
+                    contacts:
+                    {arrContacts.map(c => <div>{c}</div>)}
+                </div> : null}
 
         </div>
     )
