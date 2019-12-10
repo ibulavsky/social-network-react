@@ -1,0 +1,45 @@
+.formWrapper {
+    height: 50px;
+    /*margin: 10px;*/
+    display: flex;
+    padding: 0;
+    margin: 10px 0 0 0;
+    width: 100%;
+    /*border: 1px solid red;*/
+    /*border-radius: 10px;*/
+}
+
+.textareaWrapper {
+    width: 100%;
+    height: 100%;
+    /*border: greenyellow 1px solid;*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*align-items: center;*/
+}
+
+.textarea {
+    display: flex;
+    padding: 10px 10px;
+    margin: 0 0;
+    height: 28px;
+    width: calc(100% - 22px);
+    resize: none;
+    /*border: 1px solid navy;*/
+    border-radius: 10px;
+}
+
+.buttonWrapper {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /*border: 1px solid navy;*/
+}
+
+.button {
+    display: flex;
+    margin: 0 10px;
+    /*padding: 10px 0;*/
+}

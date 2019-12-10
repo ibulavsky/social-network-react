@@ -1,69 +1,73 @@
-import React, {Component} from 'react';
+import React, {useState} from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {Redirect} from "react-router-dom";
-import {Field, reduxForm} from "redux-form";
-import {Textarea} from "../common/FormsControl/FormsControls";
-import {maxLengthCreator, required} from "../../utils/validators/validators";
+import {AddMessageFormRedux} from "./Message/SendForm"
 
-class Dialogs extends Component {
-    render() {
-        let state = this.props.messagesPage;
+const Dialogs = ({dialogsPage, ...props}) => {
+    const [isMessagesWindow, activatingMessagesWindow] = useState(true)
 
-        let dialogsElements = state.dialogsData.map((users) => <DialogItem
-                name={users.name}
-                id={users.id}
-                key={users.id}
-            />
-        );
+    let dialogsElements = dialogsPage.dialogsData.map((dialog) => <DialogItem
+            getMessages={props.getMessages}
+            activatingMessagesWindow={activatingMessagesWindow}
+            name={dialog.userName}
+            id={dialog.id}
+            key={dialog.id}
+            photo={dialog.photos.small}
+            newMessagesCount={dialog.newMessagesCount}
+            isNewMessage={dialog.hasNewMessages}
+        />
+    )
 
-        let messagesElements = state.messagesData.map((m) => <Message
-                message={m.message}
-                key={m.id}
-            />
-        );
+    // "id": "c7e99ff5-f656-4457-a8ee-53f90ede7320",
+    //     "body": "Hello",
+    //     "translatedBody": null,
+    //     "addedAt": "2019-12-08T11:33:47.977",
+    //     "senderId": 1567,
+    //     "senderName": "ibulavsky",
+    //     "recipientId": 1570,
+    //     "viewed": false
 
-        let addNewMessage = (values) => {
-            this.props.sendMessage(values.newMessageBody)
-        };
+    let messagesElements = dialogsPage.messagesData.map((m) => <Message
+            getMessages={props.getMessages}
+            activatingMessagesWindow={activatingMessagesWindow}
+            message={m.body}
+            key={m.id}
+            id={m.id}
+            companionId={m.recipientId}
+            name={m.senderName}
+        />
+    )
 
-        if (!this.props.isAuth) return <Redirect to={"/login"}/>;
+    let addNewMessage = (values) => {
+        props.sendMessage(values.newMessageBody)
+    }
 
-        return (
-            <div className={s.dialogs}>
-                <div className={s.dialogsItems}>
-                    <div>{dialogsElements}</div>
-                </div>
-                <div className={s.messages}>
+    if (!props.isAuth) return <Redirect to={"/login"}/>;
+
+    return (
+        <div className={s.dialogs}>
+            {isMessagesWindow
+                ? <div className={s.messages}>
+                    <button onClick={() => activatingMessagesWindow(false)}>
+                        назад
+                    </button>
                     <div>{messagesElements}</div>
                     <div>
                         <AddMessageFormRedux onSubmit={addNewMessage}/>
                     </div>
+                    {/*<button onClick={() => {*/}
+                    {/*    props.getMessages(props.companionId)*/}
+                    {/*}}>посмотреть*/}
+                    {/*</button>*/}
                 </div>
-            </div>
-        )
-    }
-}
-
-const maxLength100 = maxLengthCreator(100);
-
-const AddMessageForm = (props) => {
-    return (<form onSubmit={props.handleSubmit}>
-            <div>
-                <Field component={Textarea}
-                       validate={[required, maxLength100]}
-                       name='newMessageBody'
-                       placeholder='Enter your message'/>
-            </div>
-            <div>
-                <button>Запостить</button>
-            </div>
-        </form>
+                : <div className={s.dialogsItems}>
+                    <div>{dialogsElements}</div>
+                </div>
+            }
+        </div>
     )
-};
-
-const AddMessageFormRedux = reduxForm({form: "dialogAddMessageForm"})(AddMessageForm);
-
+}
 
 export default Dialogs;
