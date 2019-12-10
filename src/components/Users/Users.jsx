@@ -6,9 +6,11 @@ let Users = ({currentPage, totalUsersCount, pageSize, onPageChanged, users, ...p
     console.log(users)
     return <div>
         <Pagination currentPage={currentPage}
-                    totalUsersCount={totalUsersCount}
+                    totalItemsCount={totalUsersCount}
                     pageSize={pageSize}
-                    onPageChanged={onPageChanged}/>
+                    onPageChanged={onPageChanged}
+                    portionSize={20}
+        />
         <div>
             {users.map(u => <User
                     user={u}

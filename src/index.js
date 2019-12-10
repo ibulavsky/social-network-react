@@ -1,19 +1,12 @@
 import * as serviceWorker from './serviceWorker';
 import React from 'react';
 import './index.css';
-import store from './redux/redux-store'
 import ReactDOM from "react-dom";
-import App from "./App";
-import {BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import {isError401} from "./redux/errors-handler"
+import {isError401} from "./redux/errors-handler";
+import MainApp from "./App"
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Provider store={store}>
-            <App/>
-        </Provider>
-    </BrowserRouter>, document.getElementById('root'));
+    <MainApp/>, document.getElementById('root'));
 
 isError401();
 

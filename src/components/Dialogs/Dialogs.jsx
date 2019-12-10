@@ -6,7 +6,7 @@ import {Redirect} from "react-router-dom";
 import {AddMessageFormRedux} from "./Message/SendForm"
 
 const Dialogs = ({dialogsPage, ...props}) => {
-    const [isMessagesWindow, activatingMessagesWindow] = useState(true)
+    const [isMessagesWindow, activatingMessagesWindow] = useState(false)
 
     let dialogsElements = dialogsPage.dialogsData.map((dialog) => <DialogItem
             getMessages={props.getMessages}
