@@ -2,6 +2,10 @@
     display: grid;
     height: 150px;
     width: 150px;
-    border: black;
     border-radius: 25px;
+}
+
+.errorMessage {
+    font-style: italic;
+    color: red;
 }

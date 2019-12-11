@@ -5,8 +5,7 @@ const Avatar = ({photo, ...props}) => {
     const styleForAvatar = `${props.styled}`;
     return <>
         <img alt='Avatar'
-             src={photo != null
-                 ? photo : userPhoto}
+             src={photo || userPhoto}
              className={styleForAvatar}/>
     </>
 }

@@ -7,14 +7,16 @@ import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {Textarea} from "../../common/FormsControl/FormsControls";
 
 const Posts = React.memo((props) => {
-        const MyPosts = props.profilePage.postsData.map((obj) => <Post message={obj.message} likesCount={obj.likesCount}/>)
+        const MyPosts = props.profilePage.postsData.map((obj) => <Post key={obj.id} message={obj.message} likesCount={obj.likesCount}/>)
         let onAddPost = (values) => {
             props.addPost(values.newPostText);
             // ADD-POST
         };
         return (
             <div className={s.item}>
+                {!!props.isOwner &&
                 <PostsFormRedux onSubmit={onAddPost}/>
+                }
                 <div className={s.posts}>
                     {MyPosts}
                 </div>

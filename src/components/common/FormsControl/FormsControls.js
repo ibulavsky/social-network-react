@@ -9,7 +9,7 @@ const FormControl = ({meta: {touched, error}, children}) => {
             <div>
                 {children}
             </div>
-            <br/>
+            {/*<br/>*/}
             {hasError && <span>{error}</span>}
         </div>
     )

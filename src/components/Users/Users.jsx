@@ -4,7 +4,6 @@ import User from "./User"
 import s from "./Users.module.css"
 
 let Users = ({currentPage, totalUsersCount, pageSize, onPageChanged, users, ...props}) => {
-    console.log(users)
     return <div className={s.usersContainer}>
         <Pagination currentPage={currentPage}
                     totalItemsCount={totalUsersCount}

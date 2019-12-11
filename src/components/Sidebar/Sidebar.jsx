@@ -7,7 +7,7 @@ const Sidebar = (props) => {
     return (
         <div>
             Friends:
-            {props.friendsName.map((m) => <div> {m.name} </div>)}
+            {props.friendsName.map((m) => <div key={m.id}> {m.name} </div>)}
         </div>
     )
 };
