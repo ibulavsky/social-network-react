@@ -18,14 +18,14 @@
 
 .loginBlock a {
     color: white;
-    font-family: "Droid Sans";
+    /*font-family: "Droid Sans";*/
     font-style: italic;
     font-size: 20px;
 }
 
 .loginBlock span {
     color: white;
-    font-family: "Droid Sans";
+    /*font-family: "Droid Sans";*/
     font-style: italic;
     font-size: 20px;
 }
