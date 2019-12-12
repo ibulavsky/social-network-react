@@ -40,8 +40,7 @@ const ProfileDesc = (props) => {
                     <b>My Skills:</b> {props.profileData.lookingForAJobDescription}
                 </div>}
                 {(arrContacts.length !== 0) ?
-                    <>
-                        <b>Contacts:</b>
+                    <><b>Contacts:</b>
                         {arrContacts}
                     </> : null
                 }
