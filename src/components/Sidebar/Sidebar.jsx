@@ -1,11 +1,9 @@
 import React from 'react';
-// import s from './Profile.module.css';
-// import PropTypes from 'prop-types';
-
+import '../../App.css';
 
 const Sidebar = (props) => {
     return (
-        <div>
+        <div className="sidebar">
             Friends:
             {props.friendsName.map((m) => <div key={m.id}> {m.name} </div>)}
         </div>

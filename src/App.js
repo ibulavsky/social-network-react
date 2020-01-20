@@ -34,17 +34,19 @@ class App extends Component {
             return (
                 <div className='app-wrapper'>
                     < Header/>
-                    < Navbar/>
-                    < SidebarContainer className="sidebar"/>
                     <div className='app-wrapper-content'>
-                        <Route path='/Dialogs' render={() => <DialogsContainer/>}/>
-                        <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
-                        <Route path='/News' render={withSuspense(News)}/>
-                        <Route path='/Music' component={Music}/>
-                        <Route path='/Users' render={withSuspense(UsersContainer)}/>
-                        <Route path='/Login' render={() => <LoginPage/>}/>
+                        <div className='app-navbar'>
+                            < Navbar />
+                            < SidebarContainer />
+                        </div>
+                        <div className="app-content">
+                            <Route path='/Dialogs' render={() => <DialogsContainer/>}/>
+                            <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
+                            <Route path='/Users' render={withSuspense(UsersContainer)}/>
+                            <Route path='/Login' render={() => <LoginPage/>}/>
+                        </div>
                     </div>
-                    < Ad/>
+                    {/*< Ad/>*/}
                     < Footer/>
                 </div>
             )
@@ -65,7 +67,7 @@ const MainApp = (props) => {
         <>
             <BrowserRouter>
                 <Provider store={store}>
-                    <AppContainer/>
+                    <AppContainer />
                 </Provider>
             </BrowserRouter>
         </>

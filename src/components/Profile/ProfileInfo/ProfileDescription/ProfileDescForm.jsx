@@ -9,9 +9,7 @@ const ProfileDescForm = ({profile, handleSubmit, error, ...props}) => {
     const objContacts = props.profileData.contacts;
     const arrContacts = Object.keys(objContacts)
         .map(key => <div key={key} className={s.descElementWrap}>
-            <b>
-                {key} : {createField(key, "contacts." + key, [], Input)}
-            </b>
+            <b className={s.descElementTitle}>{key}:</b> {createField(key, "contacts." + key, [], Input)}
         </div>)
 
     return (
@@ -26,12 +24,12 @@ const ProfileDescForm = ({profile, handleSubmit, error, ...props}) => {
                     {createField("About me", "aboutMe", [], Textarea)}
                 </div>
                 <div className={s.descElementWrap}>
-                    <b className={s.descElementTitle}>Looking For A JOB: </b>
+                    <b className={s.descElementTitle}>Looking For A JOB</b>
                     {createField("Looking for a job", "lookingForAJob", [], Input, {type: "checkbox"})}
                 </div>
                 <div className={s.descElementWrap}>
-                    <b className={s.descElementTitle}>My
-                        Skills:</b> {createField("My Skills", "lookingForAJobDescription", [], Textarea)}
+                    <b className={s.descElementTitle}>My Skills:</b>
+                    {createField("My Skills", "lookingForAJobDescription", [], Textarea)}
                 </div>
             </div>
             {arrContacts}

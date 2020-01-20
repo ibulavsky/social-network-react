@@ -10,8 +10,8 @@ export const UPLOAD_PHOTO_ERROR = 'SOCIAL-NETWORK/PROFILE-REDUCER/UPLOAD_PHOTO_E
 
 const initialState = {
     postsData: [
-        {id: 1, message: 'My Post', likesCount: 1},
-        {id: 2, message: 'My Post 2', likesCount: 3},
+        // {id: 1, message: 'My Post', likesCount: 1},
+        // {id: 2, message: 'My Post 2', likesCount: 3},
         {id: 3, message: "Hello World! What's up?", likesCount: 25},
     ],
     profile: null,
