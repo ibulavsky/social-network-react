@@ -11,29 +11,23 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
     const unFollowClick = () => unfollow(user.id)
 
     return <>
-              <span>
+              <span className={s.user}>
+                  <div className={s.photoContainer}>
                   <NavLink to={`profile/${user.id}`}>
                                 <Avatar photo={user.photos.small} styled={s.userPhoto}/>
                   </NavLink>
-                  <div>
-                     {user.followed
-                         ? <button
-                             disabled={followingInProgress.some(id => id === user.id)}
-                             onClick={unFollowClick}>Unfollow</button>
-                         : <button disabled={followingInProgress.some(id => id === user.id)}
-                                   onClick={followClick}>Follow</button>}
+                      {user.followed
+                          ? <button
+                              disabled={followingInProgress.some(id => id === user.id)}
+                              onClick={unFollowClick}>Unfollow</button>
+                          : <button disabled={followingInProgress.some(id => id === user.id)}
+                                    onClick={followClick}>Follow</button>}
                 </div>
+                   <span className={s.userDesc}>
+                        <div>{user.name}</div>
+                        <div>{user.status}</div>
+                   </span>
             </span>
-        <span>
-            <span>
-                <div>{user.name}</div>
-                <div>{user.status}</div>
-            </span>
-            <span>
-                <div>{`user.location.country`}</div>
-                <div>{`user.location.city`}</div>
-            </span>
-        </span>
     </>
 }
 

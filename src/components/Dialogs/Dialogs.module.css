@@ -1,15 +1,18 @@
 .dialogs {
-    width: 100%;
+    width: 525px;
     display: flex;
     flex-direction: column;
+    margin-top: 10px;
 }
 
 .message {
     display: flex;
     align-items: center;
     min-height: 50px;
+    border-radius: 10px;
     background-color: white;
-    border-bottom: navy 1px dotted;
+    margin: 10px 0;
+    padding: 10px;
 }
 
 .autorName {
