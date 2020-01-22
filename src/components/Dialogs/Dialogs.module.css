@@ -5,6 +5,12 @@
     margin-top: 10px;
 }
 
+.messages button {
+    display: flex;
+    padding: 0 10px;
+    height: 30px;
+}
+
 .message {
     display: flex;
     align-items: center;

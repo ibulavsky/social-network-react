@@ -4,6 +4,7 @@ import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {Redirect} from "react-router-dom";
 import {AddMessageFormRedux} from "./Message/SendForm"
+import Preloader from "../common/Preloader/Preloader"
 
 const Dialogs = ({dialogsPage, ...props}) => {
     const [isMessagesWindow, activatingMessagesWindow] = useState(false)
@@ -48,23 +49,27 @@ const Dialogs = ({dialogsPage, ...props}) => {
 
     return (
         <div className={s.dialogs}>
-            {isMessagesWindow
-                ? <div className={s.messages}>
-                    <button onClick={() => activatingMessagesWindow(false)}>
-                        назад
-                    </button>
-                    <div>{messagesElements}</div>
-                    <div>
-                        <AddMessageFormRedux onSubmit={addNewMessage}/>
+            {dialogsPage.isLoading
+                ? <Preloader/>
+                : <> {isMessagesWindow
+                    ? <div className={s.messages}>
+                        <button onClick={() => activatingMessagesWindow(false)}>
+                            назад
+                        </button>
+                        <div>{messagesElements}</div>
+                        <div>
+                            <AddMessageFormRedux onSubmit={addNewMessage}/>
+                        </div>
+                        {/*<button onClick={() => {*/}
+                        {/*    props.getMessages(props.companionId)*/}
+                        {/*}}>посмотреть*/}
+                        {/*</button>*/}
                     </div>
-                    {/*<button onClick={() => {*/}
-                    {/*    props.getMessages(props.companionId)*/}
-                    {/*}}>посмотреть*/}
-                    {/*</button>*/}
-                </div>
-                : <div className={s.dialogsItems}>
-                    <div>{dialogsElements}</div>
-                </div>
+                    : <div className={s.dialogsItems}>
+                        <div>{dialogsElements}</div>
+                    </div>
+                }
+                </>
             }
         </div>
     )

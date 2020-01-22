@@ -1,7 +1,11 @@
-.descriptionProfile {
-    /*border: black;*/
-    /*border-radius: 25px;*/
-    /*border-width: 5px;*/
+.btnEdit {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btnEdit button {
+    height: 30px;
+    padding: 0 10px;
 }
 
 .name {

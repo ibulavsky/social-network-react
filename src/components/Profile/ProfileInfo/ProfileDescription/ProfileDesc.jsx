@@ -17,8 +17,8 @@ const ProfileDesc = (props) => {
         return (
             <div className={s.descriptionProfile}>
                 {props.isOwner &&
-                <div>
-                    <button onClick={() => props.changeData(true)}>edit</button>
+                <div className={s.btnEdit}>
+                    <button onClick={() => props.changeData(true)}>edit info</button>
                 </div>
                 }
                 <span className={s.name}>

@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "csscomb": "^4.3.0",
-    "redux-devtools": "^3.5.0"
+    "redux-devtools": "^3.5.0",
+    "prop-types": "latest"
   }
 }

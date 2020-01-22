@@ -2,6 +2,8 @@ import {dialogsAPI} from "../api/dialogs-api"
 
 export const SEND_MESSAGE = 'SOCIAL-NETWORK/DIALOGS-REDUCER/SEND-MESSAGE';
 export const SET_MESSAGES = 'SOCIAL-NETWORK/DIALOGS-REDUCER/SET-MESSAGES';
+export const IS_MESSAGES_LOADING = 'SOCIAL-NETWORK/DIALOGS-REDUCER/IS_MESSAGES_LOADING';
+
 const initialState = {
     messagesData: [
         //отправка
@@ -62,10 +64,16 @@ const initialState = {
             }
         }
     ],
+    isLoading: false,
 };
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
+        case IS_MESSAGES_LOADING:
+            return {
+                ...state,
+                isLoading: action.isLoading
+            };
         case SEND_MESSAGE:
             let body = action.newMessage;
             return {
@@ -87,9 +95,12 @@ export default dialogsReducer;
 
 export const sendMessageCreator = (newMessage) => ({type: SEND_MESSAGE, newMessage});
 export const setMessages = (messagesList) => ({type: SET_MESSAGES, messagesList});
+export const setLoadingMessages = (isLoading) => ({type: IS_MESSAGES_LOADING, isLoading});
 
 
 export const getMessages = (userId) => async (dispatch) => {
+    dispatch(setLoadingMessages(true))
     const messagesList = await dialogsAPI.getMessage(userId)
+    dispatch(setLoadingMessages(false))
     dispatch(setMessages(messagesList))
 }

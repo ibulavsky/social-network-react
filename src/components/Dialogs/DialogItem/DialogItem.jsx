@@ -2,7 +2,6 @@ import React from 'react';
 import s from './DialogItem.module.css';
 import {NavLink} from "react-router-dom";
 import PropTypes from 'prop-types';
-// import {dialogsAPI} from "../../../api/dialogs-api"
 
 const DialogItem = (props) => {
     const getMessages = () => {
@@ -10,15 +9,6 @@ const DialogItem = (props) => {
         props.activatingMessagesWindow(true)
     }
 
-    // debugger
-    // {
-    //     name
-    //     id
-    //     key
-    //     photo
-    //     newMessageCount
-    //     isNewMessage
-    // }
     return (
         <div className={s.dialogWrapper}>
             <NavLink to={`/dialogs/${props.id}`} className={s.dialog} onClick={getMessages}>
