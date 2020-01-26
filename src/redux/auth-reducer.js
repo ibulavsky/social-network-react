@@ -46,7 +46,9 @@ export const getAuthUserData = () => async (dispatch) => {
             dispatch(setAuthUserData(id, email, login, true));
         }
     } catch (error) {
-        console.error(error.response.message);
+        console.error(
+            // error.response.message ? error.response.message :
+            'error');
     }
 }
 

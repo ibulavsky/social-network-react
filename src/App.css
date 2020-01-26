@@ -12,6 +12,7 @@ height: 100%;
     flex-direction: row;
     min-height: 100%;
     background-color: whitesmoke;
+    width: 760px;
 
 }
 
@@ -32,4 +33,5 @@ height: 100%;
 }
 
 .app-content {
+    width: 100%;
 }

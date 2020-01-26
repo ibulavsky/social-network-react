@@ -10,7 +10,7 @@ import styles from '../../components/common/FormsControl/FormsControls.module.cs
 
 
 const LoginForm = ({handleSubmit, error, captchaUrl}) => {
-    return <form onSubmit={handleSubmit}>
+    return <form className={styles.loginWrapper} onSubmit={handleSubmit}>
         {createField('Email', 'email', [required], Input)}
         {createField('Password', 'password', [required], Input, {type: 'password'})}
         <div className={styles.checkboxWrapper}>
@@ -23,9 +23,7 @@ const LoginForm = ({handleSubmit, error, captchaUrl}) => {
         {error && <div className={styles.formSummaryError}>
             {error}
         </div>}
-        <div>
-            <button>Login</button>
-        </div>
+        <button style={{height: '30px'}}>Login</button>
     </form>
 };
 
@@ -36,8 +34,8 @@ const Login = ({login, isAuth, captchaUrl}) => {
     if (isAuth) {
         return <Redirect to={"/profile"}/>
     } else {
-        return <div>
-            <h1> Login</h1>
+        return <div className={styles.loginPage}>
+            <h1 className={styles.loginHeader}>Login</h1>
             <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
         </div>
     }
