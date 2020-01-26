@@ -39,8 +39,8 @@ class ProfileContainer extends React.Component {
         return (
             <Profile {...this.props}
                      isOwner={!this.props.match.params.userId}
-                     profile={this.props.profile}
-                     status={this.props.status}
+                     errorMessage={this.props.errorMessage}
+                     isLoading={this.props.isLoading}
                      updateStatus={this.props.updateStatus}
                      addPhoto={this.addPhoto}
                      saveProfile={this.props.saveProfile}
@@ -51,9 +51,10 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
-    status: state.profilePage.status,
+    errorMessage: state.profilePage.errorMessage,
+    isLoading: state.profilePage.isLoading,
     authorizedUserId: state.auth.userId,
-    isAuth: state.auth.isAuth
+    isAuth: state.auth.isAuth,
 });
 
 export default compose(
