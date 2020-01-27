@@ -21,6 +21,9 @@ export const getIsFetching = (state) => {
 export const getFollowingInProgress = (state) => {
     return state.usersPage.followingInProgress;
 };
+export const getRedirectToDialogId = (state) => {
+    return state.usersPage.redirectToDialogId;
+};
 
 
 // reselector Example

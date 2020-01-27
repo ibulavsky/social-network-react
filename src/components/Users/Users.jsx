@@ -18,6 +18,7 @@ let Users = ({currentPage, totalUsersCount, pageSize, onPageChanged, users, ...p
                     follow={props.follow}
                     unfollow={props.unfollow}
                     followingInProgress={props.followingInProgress}
+                    startDialog={props.startDialog}
                 />
             )
             }

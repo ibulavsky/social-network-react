@@ -39,5 +39,4 @@ export const createField = (placeholder, name, validators, component, props, tex
             {text}
         </span>
     </div>
-
 )

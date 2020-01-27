@@ -6,7 +6,16 @@ import {
     setLoadingMessages,
     setMessages
 } from "./dialogs-reducer"
+import {setRedirectToDialog} from "../users/users-reducer"
 
+
+export const startDialog = (userId) => async (dispatch) => {
+    // dispatch(isLoadingDialogs(true))
+    const response = await dialogsAPI.startDialog(userId)
+    if (response.resultCode === 0) {
+        dispatch(setRedirectToDialog(userId))
+    }
+}
 
 export const getDialogs = () => async (dispatch) => {
     dispatch(isLoadingDialogs(true))

@@ -32,7 +32,7 @@ const ProfileDescForm = ({handleSubmit, error}) => {
                 </div>
                 <div className={s.descElementWrap}>
                     <b className={s.descElementTitle}>My Skills:</b>
-                    {createField("My Skills", "lookingForAJobDescription", [], Textarea)}
+                    {createField("My Skills", "My Skills", [], Textarea)}
                 </div>
             </div>
             {arrContacts}

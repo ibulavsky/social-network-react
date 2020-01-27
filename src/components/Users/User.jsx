@@ -3,12 +3,14 @@ import s from "./Users.module.css";
 import {NavLink} from "react-router-dom";
 import Avatar from "../common/UserAvatar/Avatar.jsx"
 
-const User = ({user, followingInProgress, unfollow, follow}) => {
+const User = ({user, followingInProgress, unfollow, follow, startDialog}) => {
 
     const followClick = () => {
         follow(user.id)
     }
     const unFollowClick = () => unfollow(user.id)
+
+    const onStartDialog = () => startDialog(user.id)
 
     return <>
               <span className={s.user}>
@@ -22,6 +24,11 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
                               onClick={unFollowClick}>Unfollow</button>
                           : <button disabled={followingInProgress.some(id => id === user.id)}
                                     onClick={followClick}>Follow</button>}
+                      {
+                          <button onClick={onStartDialog}>
+                              Dialog
+                          </button>
+                      }
                 </div>
                    <span className={s.userDesc}>
                         <div>{user.name}</div>

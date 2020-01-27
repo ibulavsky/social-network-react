@@ -9,11 +9,13 @@ import {compose} from "redux";
 import {
     getCurrentPage, getFollowingInProgress,
     getIsFetching,
-    getPageSize,
+    getPageSize, getRedirectToDialogId,
     getTotalUsersCount,
     getUsers
 } from "../../redux/users/users-selectors";
 import {setCurrentPage, toggleIsFollowingProgress} from "../../redux/users/users-reducer"
+import {startDialog} from "../../redux/dialogs/dialogs-thunks"
+import {Redirect} from "react-router-dom"
 
 
 class UsersContainer extends React.Component {
@@ -28,9 +30,17 @@ class UsersContainer extends React.Component {
         this.props.getUsers(pageNumber, pageSize);
     }
 
+
     render() {
+
+        if (this.props.userId) {
+            return <Redirect to={`/dialogs/${this.props.userId}`}/>
+        }
+
         return <>
-            {this.props.isFetching ? <Preloader/> : null}
+            {this.props.isFetching
+                ? <Preloader/>
+                : null}
             <Users onPageChanged={this.onPageChanged}
                    totalUsersCount={this.props.totalUsersCount}
                    pageSize={this.props.pageSize}
@@ -39,6 +49,7 @@ class UsersContainer extends React.Component {
                    follow={this.props.follow}
                    unfollow={this.props.unfollow}
                    followingInProgress={this.props.followingInProgress}
+                   startDialog={this.props.startDialog}
             />
         </>
     }
@@ -52,9 +63,11 @@ let mapStateToProps = (state) => {
         currentPage: getCurrentPage(state),
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state),
+        userId: getRedirectToDialogId(state)
     }
 }
 
 export default compose(
-    connect(mapStateToProps,
-        {follow, unfollow, setCurrentPage, toggleIsFollowingProgress, getUsers: requestUsers}))(UsersContainer)
+    connect(mapStateToProps, {
+        follow, unfollow, setCurrentPage, toggleIsFollowingProgress, startDialog, getUsers: requestUsers
+    }))(UsersContainer)

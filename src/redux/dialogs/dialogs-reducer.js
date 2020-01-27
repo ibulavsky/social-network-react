@@ -42,30 +42,30 @@ const initialState = {
     ],
 
     dialogsData: [
-        {
-            "id": 1570,
-            "userName": "Gaypt1994",
-            "hasNewMessages": true,
-            "lastDialogActivityDate": "2019-12-08T08:58:57.967",
-            "lastUserActivityDate": "2019-12-07T19:12:19.397",
-            "newMessagesCount": 5,
-            "photos": {
-                "small": "https://social-network.samuraijs.com/activecontent/images/users/1570/user-small.jpg?v=1",
-                "large": "https://social-network.samuraijs.com/activecontent/images/users/1570/user.jpg?v=1"
-            }
-        },
-        {
-            "id": 1570,
-            "userName": "Gaypt1994",
-            "hasNewMessages": true,
-            "lastDialogActivityDate": "2019-12-08T08:58:57.967",
-            "lastUserActivityDate": "2019-12-07T19:12:19.397",
-            "newMessagesCount": 5,
-            "photos": {
-                "small": "https://social-network.samuraijs.com/activecontent/images/users/1570/user-small.jpg?v=1",
-                "large": "https://social-network.samuraijs.com/activecontent/images/users/1570/user.jpg?v=1"
-            }
-        },
+        // {
+        //     "id": 1570,
+        //     "userName": "Gaypt1994",
+        //     "hasNewMessages": true,
+        //     "lastDialogActivityDate": "2019-12-08T08:58:57.967",
+        //     "lastUserActivityDate": "2019-12-07T19:12:19.397",
+        //     "newMessagesCount": 5,
+        //     "photos": {
+        //         "small": "https://social-network.samuraijs.com/activecontent/images/users/1570/user-small.jpg?v=1",
+        //         "large": "https://social-network.samuraijs.com/activecontent/images/users/1570/user.jpg?v=1"
+        //     }
+        // },
+        // {
+        //     "id": 1570,
+        //     "userName": "Gaypt1994",
+        //     "hasNewMessages": true,
+        //     "lastDialogActivityDate": "2019-12-08T08:58:57.967",
+        //     "lastUserActivityDate": "2019-12-07T19:12:19.397",
+        //     "newMessagesCount": 5,
+        //     "photos": {
+        //         "small": "https://social-network.samuraijs.com/activecontent/images/users/1570/user-small.jpg?v=1",
+        //         "large": "https://social-network.samuraijs.com/activecontent/images/users/1570/user.jpg?v=1"
+        //     }
+        // },
     ],
     currentInterlocutorId: '',
     isDialogsLoading: false,
