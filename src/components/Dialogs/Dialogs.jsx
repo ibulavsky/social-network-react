@@ -2,13 +2,15 @@ import React, {useState, useEffect} from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {Redirect} from "react-router-dom";
+import {Redirect, useLocation, NavLink} from "react-router-dom";
 import {AddMessageFormRedux} from "./Message/SendForm"
 import Preloader from "../common/Preloader/Preloader"
 import {useDispatch, useSelector} from "react-redux"
 import {deleteMessage, getDialogs, sendMessage} from "../../redux/dialogs/dialogs-thunks"
 
 const Dialogs = ({dialogsPage, ...props}) => {
+
+    let {pathname} = useLocation();
 
     const [isMessagesWindow, activatingMessagesWindow] = useState(false)
 
@@ -17,6 +19,21 @@ const Dialogs = ({dialogsPage, ...props}) => {
     useEffect(() => {
         dispatch(getDialogs())
     }, [])
+
+
+    useEffect(() => {
+        refreshDialogs()
+    }, [pathname])
+
+    const refreshDialogs = () => {
+        if (pathname !== ('/dialogs' || '/dialogs/')) {
+            props.getMessages(pathname.slice(9));
+            activatingMessagesWindow(true)
+        } else {
+            activatingMessagesWindow(false)
+            dispatch(getDialogs())
+        }
+    }
 
     //data
     const dialogsArr = useSelector((state) => state.messagesPage.dialogsData)
@@ -34,9 +51,7 @@ const Dialogs = ({dialogsPage, ...props}) => {
         dispatch(deleteMessage(id, currentInterlocutorId))
     }
 
-
     let dialogsElements = dialogsArr.map((dialog) => <DialogItem
-            getMessages={props.getMessages}
             activatingMessagesWindow={activatingMessagesWindow}
             name={dialog.userName}
             id={dialog.id}
@@ -60,7 +75,7 @@ const Dialogs = ({dialogsPage, ...props}) => {
         />
     )
 
-    if (!props.isAuth) return <Redirect to={"/login"}/>;
+    if (!props.isAuth) return <Redirect to={'/login'}/>;
 
     return (
         <div className={s.dialogs}>
@@ -69,9 +84,12 @@ const Dialogs = ({dialogsPage, ...props}) => {
                     {isMessagesLoading
                         ? <Preloader/>
                         : <div className={s.messages}>
-                            <button onClick={() => activatingMessagesWindow(false)}>
-                                назад
-                            </button>
+                            <NavLink to={'/dialogs'}>
+                                <button
+                                    // onClick={() => activatingMessagesWindow(false)}
+                                > назад
+                                </button>
+                            </NavLink>
                             <div>{messagesElements}</div>
                             <div>
                                 <AddMessageFormRedux onSubmit={addNewMessage}/>

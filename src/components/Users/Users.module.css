@@ -35,6 +35,10 @@
     height: 30px;
     margin-top: 10px;
 }
+
+.photoContainer a {
+    text-decoration: none;
+}
 .userDesc {
     margin: 10px;
 }

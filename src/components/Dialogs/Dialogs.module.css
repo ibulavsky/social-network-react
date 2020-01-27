@@ -11,6 +11,10 @@
     height: 30px;
 }
 
+.messages a {
+    text-decoration: none;
+}
+
 .message {
     position: relative;
     display: flex;

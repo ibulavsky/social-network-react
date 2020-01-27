@@ -5,14 +5,9 @@ import PropTypes from 'prop-types';
 
 const DialogItem = (props) => {
 
-    const getMessages = () => {
-        props.getMessages(props.id);
-        props.activatingMessagesWindow(true)
-    }
-
     return (
         <div className={s.dialogWrapper}>
-            <NavLink to={`/dialogs/${props.id}`} className={s.dialog} onClick={getMessages}>
+            <NavLink to={`/dialogs/${props.id}`} className={s.dialog}>
                 <div className={s.avatarWrapper}>
                     <img src={props.photo} alt='user avatar' className={s.avatar}/>
                 </div>

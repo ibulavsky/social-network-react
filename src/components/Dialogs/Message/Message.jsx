@@ -11,7 +11,7 @@ function Message(props) {
                     {props.name}:
                 </span>
                 <span className={s.textMessage}>
-                    "{props.message}"
+                    {props.message}
             </span>
                 <button onClick={() => props.deleteMessage(props.id)}>
                     Delete
