@@ -13,6 +13,9 @@ function Message(props) {
                 <span className={s.textMessage}>
                     "{props.message}"
             </span>
+                <button onClick={() => props.deleteMessage(props.id)}>
+                    Delete
+                </button>
             </div>
         </div>
     </>

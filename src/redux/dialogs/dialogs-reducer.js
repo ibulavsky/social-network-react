@@ -2,6 +2,7 @@ export const SEND_MESSAGE = 'SOCIAL-NETWORK/DIALOGS-REDUCER/SEND-MESSAGE';
 export const SET_MESSAGES = 'SOCIAL-NETWORK/DIALOGS-REDUCER/SET-MESSAGES';
 export const IS_MESSAGES_LOADING = 'SOCIAL-NETWORK/DIALOGS-REDUCER/IS_MESSAGES_LOADING';
 export const IS_DIALOGS_LOADING = 'SOCIAL-NETWORK/DIALOGS-REDUCER/IS_DIALOGS_LOADING';
+export const SET_INTERLOCUTOR_ID = 'SOCIAL-NETWORK/DIALOGS-REDUCER/SET_INTERLOCUTOR_ID';
 export const SET_DIALOGS = 'SOCIAL-NETWORK/DIALOGS-REDUCER/SET_DIALOGS';
 export const START_DIALOG = 'SOCIAL-NETWORK/DIALOGS-REDUCER/START_DIALOG';
 
@@ -28,16 +29,16 @@ const initialState = {
         //         }
         //     }, "messages": [], "resultCode": 0
         // },
-        {
-            "id": "c7e99ff5-f656-4457-a8ee-53f90ede7320",
-            "body": "Hello",
-            "translatedBody": null,
-            "addedAt": "2019-12-08T11:33:47.977",
-            "senderId": 1567,
-            "senderName": "ibulavsky",
-            "recipientId": 1570,
-            "viewed": false
-        },
+        // {
+        //     "id": "c7e99ff5-f656-4457-a8ee-53f90ede7320",
+        //     "body": "Hello",
+        //     "translatedBody": null,
+        //     "addedAt": "2019-12-08T11:33:47.977",
+        //     "senderId": 1567,
+        //     "senderName": "ibulavsky",
+        //     "recipientId": 1570,
+        //     "viewed": false
+        // },
     ],
 
     dialogsData: [
@@ -66,6 +67,7 @@ const initialState = {
             }
         },
     ],
+    currentInterlocutorId: '',
     isDialogsLoading: false,
     isLoading: false,
 };
@@ -81,6 +83,11 @@ const dialogsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 dialogsData: action.dialogsList,
+            };
+        case SET_INTERLOCUTOR_ID:
+            return {
+                ...state,
+                currentInterlocutorId: action.currentInterlocutorId,
             };
         case IS_MESSAGES_LOADING:
             return {
@@ -108,5 +115,6 @@ export default dialogsReducer;
 export const sendMessageCreator = (newMessage) => ({type: SEND_MESSAGE, newMessage});
 export const setMessages = (messagesList) => ({type: SET_MESSAGES, messagesList});
 export const setLoadingMessages = (isLoading) => ({type: IS_MESSAGES_LOADING, isLoading});
+export const setCurrentInterlocutorId = (currentInterlocutorId) => ({type: SET_INTERLOCUTOR_ID, currentInterlocutorId});
 export const isLoadingDialogs = (isLoading) => ({type: IS_DIALOGS_LOADING, isLoading});
 export const setDialogs = (dialogsList) => ({type: SET_DIALOGS, dialogsList});

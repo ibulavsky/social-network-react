@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 import PropTypes from 'prop-types';
 
 const DialogItem = (props) => {
+
     const getMessages = () => {
         props.getMessages(props.id);
         props.activatingMessagesWindow(true)

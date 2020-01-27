@@ -6,9 +6,10 @@ import {Redirect} from "react-router-dom";
 import {AddMessageFormRedux} from "./Message/SendForm"
 import Preloader from "../common/Preloader/Preloader"
 import {useDispatch, useSelector} from "react-redux"
-import {getDialogs} from "../../redux/dialogs/dialogs-thunks"
+import {deleteMessage, getDialogs, sendMessage} from "../../redux/dialogs/dialogs-thunks"
 
 const Dialogs = ({dialogsPage, ...props}) => {
+
     const [isMessagesWindow, activatingMessagesWindow] = useState(false)
 
     const dispatch = useDispatch();
@@ -17,10 +18,22 @@ const Dialogs = ({dialogsPage, ...props}) => {
         dispatch(getDialogs())
     }, [])
 
+    //data
     const dialogsArr = useSelector((state) => state.messagesPage.dialogsData)
     const messagesArr = useSelector((state) => state.messagesPage.messagesData)
+    const currentInterlocutorId = useSelector((state) => state.messagesPage.currentInterlocutorId)
     const isDialogsLoading = useSelector((state) => state.messagesPage.isDialogsLoading)
     const isMessagesLoading = useSelector((state) => state.messagesPage.isLoading)
+
+    //methods
+    const addNewMessage = (values) => {
+        dispatch(sendMessage(currentInterlocutorId, values.newMessageBody))
+    }
+
+    const onDeleteMessage = (id) => {
+        dispatch(deleteMessage(id, currentInterlocutorId))
+    }
+
 
     let dialogsElements = dialogsArr.map((dialog) => <DialogItem
             getMessages={props.getMessages}
@@ -34,17 +47,9 @@ const Dialogs = ({dialogsPage, ...props}) => {
         />
     )
 
-    // "id": "c7e99ff5-f656-4457-a8ee-53f90ede7320",
-    //     "body": "Hello",
-    //     "translatedBody": null,
-    //     "addedAt": "2019-12-08T11:33:47.977",
-    //     "senderId": 1567,
-    //     "senderName": "ibulavsky",
-    //     "recipientId": 1570,
-    //     "viewed": false
-
     let messagesElements = messagesArr.map((m) => <Message
             getMessages={props.getMessages}
+            deleteMessage={onDeleteMessage}
             activatingMessagesWindow={activatingMessagesWindow}
             message={m.body}
             key={m.id}
@@ -54,10 +59,6 @@ const Dialogs = ({dialogsPage, ...props}) => {
             viewed={m.viewed}
         />
     )
-
-    const addNewMessage = (values) => {
-        props.sendMessage(values.newMessageBody)
-    }
 
     if (!props.isAuth) return <Redirect to={"/login"}/>;
 

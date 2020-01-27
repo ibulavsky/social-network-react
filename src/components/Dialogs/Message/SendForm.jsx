@@ -1,5 +1,5 @@
 import React from 'react'
-import {maxLength, maxLengthCreator} from "../../../utils/validators/validators"
+import {maxLengthCreator} from "../../../utils/validators/validators"
 import {Field, reduxForm} from "redux-form"
 import {Textarea} from "../../common/FormsControl/FormsControls"
 import s from './SendForm.module.css'
