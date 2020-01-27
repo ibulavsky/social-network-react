@@ -1,10 +1,11 @@
 import React from 'react';
+import cn from 'classnames';
 import s from './../Dialogs.module.css';
 
 function Message(props) {
     return <>
 
-        <div className={s.message}>
+        <div className={cn(s.message, {[`${s.unViewed}`]: !props.viewed})}>
             <div>
                 <span className={s.autorName}>
                     {props.name}:
@@ -12,11 +13,9 @@ function Message(props) {
                 <span className={s.textMessage}>
                     "{props.message}"
             </span>
-
             </div>
         </div>
     </>
-
 }
 
 export default Message;

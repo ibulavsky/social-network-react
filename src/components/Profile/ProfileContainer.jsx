@@ -1,7 +1,7 @@
 import React from 'react';
 import Profile from "./Profile";
 import {connect} from 'react-redux'
-import {addPhoto, getStatus, getUserProfile, saveProfile, updateStatus} from "../../redux/profile-reducer";
+import {addPhoto, getStatus, getUserProfile, saveProfile, updateStatus} from "../../redux/profile/profile-thunks";
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect"

@@ -1,5 +1,6 @@
 // import React from 'react';
-import {getMessages, sendMessageCreator} from "../../redux/dialogs-reducer";
+import {sendMessageCreator} from "../../redux/dialogs/dialogs-reducer";
+import {getMessages} from "../../redux/dialogs/dialogs-thunks"
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
@@ -7,7 +8,7 @@ import {compose} from "redux";
 
 const mapStateToProps = (state) => {
     return {
-        dialogsPage: state.messagesPage,
+        // dialogsPage: state.messagesPage,
     }
 };
 

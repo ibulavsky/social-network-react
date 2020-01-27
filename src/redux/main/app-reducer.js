@@ -1,4 +1,4 @@
-import {getAuthUserData} from "./auth-reducer";
+import {getAuthUserData} from "../auth/auth-thunks";
 
 export const INITIALIZED_SUCCESS = 'SOCIAL-NETWORK/APP-REDUCER/INITIALIZED_SUCCESS';
 
@@ -29,6 +29,3 @@ export const initializeApp = () => (dispatch) => {
         dispatch(initializedSuccess());
     })
 };
-
-
-

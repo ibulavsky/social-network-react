@@ -21,6 +21,10 @@
     padding: 10px;
 }
 
+.unViewed {
+    background-color: gainsboro;
+}
+
 .autorName {
     font-weight: bold;
 }

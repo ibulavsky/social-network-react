@@ -1,10 +1,9 @@
 import React from 'react';
 import {reduxForm} from "redux-form";
-// import * as api from "../../api/api";
 import {createField, Input} from "../common/FormsControl/FormsControls";
 import {required} from "../../utils/validators/validators";
 import {connect} from "react-redux";
-import {login, logout} from "../../redux/auth-reducer";
+import {login, logout} from "../../redux/auth/auth-thunks";
 import {Redirect} from "react-router-dom";
 import styles from '../../components/common/FormsControl/FormsControls.module.css'
 

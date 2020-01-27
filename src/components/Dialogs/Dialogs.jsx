@@ -1,15 +1,28 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import {Redirect} from "react-router-dom";
 import {AddMessageFormRedux} from "./Message/SendForm"
 import Preloader from "../common/Preloader/Preloader"
+import {useDispatch, useSelector} from "react-redux"
+import {getDialogs} from "../../redux/dialogs/dialogs-thunks"
 
 const Dialogs = ({dialogsPage, ...props}) => {
     const [isMessagesWindow, activatingMessagesWindow] = useState(false)
 
-    let dialogsElements = dialogsPage.dialogsData.map((dialog) => <DialogItem
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getDialogs())
+    }, [])
+
+    const dialogsArr = useSelector((state) => state.messagesPage.dialogsData)
+    const messagesArr = useSelector((state) => state.messagesPage.messagesData)
+    const isDialogsLoading = useSelector((state) => state.messagesPage.isDialogsLoading)
+    const isMessagesLoading = useSelector((state) => state.messagesPage.isLoading)
+
+    let dialogsElements = dialogsArr.map((dialog) => <DialogItem
             getMessages={props.getMessages}
             activatingMessagesWindow={activatingMessagesWindow}
             name={dialog.userName}
@@ -30,7 +43,7 @@ const Dialogs = ({dialogsPage, ...props}) => {
     //     "recipientId": 1570,
     //     "viewed": false
 
-    let messagesElements = dialogsPage.messagesData.map((m) => <Message
+    let messagesElements = messagesArr.map((m) => <Message
             getMessages={props.getMessages}
             activatingMessagesWindow={activatingMessagesWindow}
             message={m.body}
@@ -38,10 +51,11 @@ const Dialogs = ({dialogsPage, ...props}) => {
             id={m.id}
             companionId={m.recipientId}
             name={m.senderName}
+            viewed={m.viewed}
         />
     )
 
-    let addNewMessage = (values) => {
+    const addNewMessage = (values) => {
         props.sendMessage(values.newMessageBody)
     }
 
@@ -49,22 +63,23 @@ const Dialogs = ({dialogsPage, ...props}) => {
 
     return (
         <div className={s.dialogs}>
-            {dialogsPage.isLoading
-                ? <Preloader/>
-                : <> {isMessagesWindow
-                    ? <div className={s.messages}>
-                        <button onClick={() => activatingMessagesWindow(false)}>
-                            назад
-                        </button>
-                        <div>{messagesElements}</div>
-                        <div>
-                            <AddMessageFormRedux onSubmit={addNewMessage}/>
+            {isMessagesWindow
+                ? <>
+                    {isMessagesLoading
+                        ? <Preloader/>
+                        : <div className={s.messages}>
+                            <button onClick={() => activatingMessagesWindow(false)}>
+                                назад
+                            </button>
+                            <div>{messagesElements}</div>
+                            <div>
+                                <AddMessageFormRedux onSubmit={addNewMessage}/>
+                            </div>
                         </div>
-                        {/*<button onClick={() => {*/}
-                        {/*    props.getMessages(props.companionId)*/}
-                        {/*}}>посмотреть*/}
-                        {/*</button>*/}
-                    </div>
+                    }
+                </>
+                : <> {isDialogsLoading
+                    ? <Preloader/>
                     : <div className={s.dialogsItems}>
                         <div>{dialogsElements}</div>
                     </div>

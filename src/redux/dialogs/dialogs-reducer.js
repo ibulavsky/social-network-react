@@ -1,8 +1,10 @@
-import {dialogsAPI} from "../api/dialogs-api"
-
 export const SEND_MESSAGE = 'SOCIAL-NETWORK/DIALOGS-REDUCER/SEND-MESSAGE';
 export const SET_MESSAGES = 'SOCIAL-NETWORK/DIALOGS-REDUCER/SET-MESSAGES';
 export const IS_MESSAGES_LOADING = 'SOCIAL-NETWORK/DIALOGS-REDUCER/IS_MESSAGES_LOADING';
+export const IS_DIALOGS_LOADING = 'SOCIAL-NETWORK/DIALOGS-REDUCER/IS_DIALOGS_LOADING';
+export const SET_DIALOGS = 'SOCIAL-NETWORK/DIALOGS-REDUCER/SET_DIALOGS';
+export const START_DIALOG = 'SOCIAL-NETWORK/DIALOGS-REDUCER/START_DIALOG';
+
 
 const initialState = {
     messagesData: [
@@ -62,13 +64,24 @@ const initialState = {
                 "small": "https://social-network.samuraijs.com/activecontent/images/users/1570/user-small.jpg?v=1",
                 "large": "https://social-network.samuraijs.com/activecontent/images/users/1570/user.jpg?v=1"
             }
-        }
+        },
     ],
+    isDialogsLoading: false,
     isLoading: false,
 };
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
+        case IS_DIALOGS_LOADING:
+            return {
+                ...state,
+                isDialogsLoading: action.isLoading
+            };
+        case SET_DIALOGS:
+            return {
+                ...state,
+                dialogsData: action.dialogsList,
+            };
         case IS_MESSAGES_LOADING:
             return {
                 ...state,
@@ -92,15 +105,8 @@ const dialogsReducer = (state = initialState, action) => {
 
 export default dialogsReducer;
 
-
 export const sendMessageCreator = (newMessage) => ({type: SEND_MESSAGE, newMessage});
 export const setMessages = (messagesList) => ({type: SET_MESSAGES, messagesList});
 export const setLoadingMessages = (isLoading) => ({type: IS_MESSAGES_LOADING, isLoading});
-
-
-export const getMessages = (userId) => async (dispatch) => {
-    dispatch(setLoadingMessages(true))
-    const messagesList = await dialogsAPI.getMessage(userId)
-    dispatch(setLoadingMessages(false))
-    dispatch(setMessages(messagesList))
-}
+export const isLoadingDialogs = (isLoading) => ({type: IS_DIALOGS_LOADING, isLoading});
+export const setDialogs = (dialogsList) => ({type: SET_DIALOGS, dialogsList});

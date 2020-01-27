@@ -11,7 +11,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import LoginPage from "./components/Login/Login";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
-import {initializeApp} from "./redux/app-reducer";
+import {initializeApp} from "./redux/main/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/redux-store"
 import {withSuspense} from "./hoc/withSuspense"

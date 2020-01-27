@@ -1,5 +1,5 @@
 import store from "./redux-store"
-import {setAuthUserData} from "./auth-reducer"
+import {setAuthUserData} from "./auth/auth-reducer"
 import {setHandler401} from "../api/api"
 
 export const isError401 = () => {
