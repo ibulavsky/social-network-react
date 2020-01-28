@@ -2,13 +2,14 @@ import * as serviceWorker from './serviceWorker';
 import React from 'react';
 import './index.css';
 import ReactDOM from "react-dom";
-import {isError401} from "./redux/errors-handler";
+import {isError, isError401} from "./redux/errors-handler";
 import MainApp from "./App"
 
 ReactDOM.render(
     <MainApp/>, document.getElementById('root'));
 
 isError401();
+isError();
 
 
 // If you want your app to work offline and load faster, you can change

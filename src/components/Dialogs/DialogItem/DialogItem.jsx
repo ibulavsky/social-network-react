@@ -2,6 +2,7 @@ import React from 'react';
 import s from './DialogItem.module.css';
 import {NavLink} from "react-router-dom";
 import PropTypes from 'prop-types';
+import Avatar from "../../common/UserAvatar/Avatar"
 
 const DialogItem = (props) => {
 
@@ -9,7 +10,7 @@ const DialogItem = (props) => {
         <div className={s.dialogWrapper}>
             <NavLink to={`/dialogs/${props.id}`} className={s.dialog}>
                 <div className={s.avatarWrapper}>
-                    <img src={props.photo} alt='user avatar' className={s.avatar}/>
+                    <Avatar photo={props.photo} styled={s.avatar}/>
                 </div>
                 <div className={s.nameWrapper}>
                     {props.name}
@@ -17,8 +18,8 @@ const DialogItem = (props) => {
                 {props.isNewMessage
                     ? <div className={s.newMessagesCountWrapper}>
                         <span className={s.newMessagesCount}>
-                        {props.newMessagesCount}
-                </span>
+                            {props.newMessagesCount}
+                        </span>
                     </div>
                     : null}
             </NavLink>

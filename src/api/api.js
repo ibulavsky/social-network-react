@@ -18,12 +18,20 @@ export const setHandler401 = (callback) => {
     handler401 = callback;
 }
 
+let errorHandler;
+
+export const setErrorHandler = (callback) => {
+    errorHandler = callback;
+}
+
 instance.interceptors.response.use(response => {
         return response
     },
     error => {
         if (error.response.status === 401) {
             handler401()
+        } else {
+            errorHandler(error.message)
         }
         return Promise.reject(error);
     }
@@ -66,6 +74,3 @@ export const profileAPI = {
         return instance.put(`profile/`, profile)
     },
 };
-
-
-

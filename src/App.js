@@ -16,6 +16,7 @@ import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/redux-store"
 import {withSuspense} from "./hoc/withSuspense"
 import DialogsContainer from "./components/Dialogs/DialogsContainer"
+import ModalsPage from "./components/common/ErrorModal/ModalsPage"
 
 const News = React.lazy(() => import('./components/News/News'))
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'))
@@ -43,7 +44,8 @@ class App extends Component {
         } else {
             return (
                 <div className='app-wrapper'>
-                    < Header/>
+                    <Header/>
+                    <ModalsPage/>
                     <div className='app-wrapper-content'>
                         <div className='app-navbar'>
                             < Navbar/>
