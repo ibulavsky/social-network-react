@@ -13,9 +13,6 @@ import store from "./redux/redux-store"
 import ModalsPage from "./components/common/ErrorModal/ModalsPage"
 import Routes from "./components/Main/Routes"
 
-const News = React.lazy(() => import('./components/News/News'))
-const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'))
-
 class App extends Component {
 
     catchAllUnhandledErrors = (reason, promise) => {
@@ -43,8 +40,8 @@ class App extends Component {
                     <ModalsPage/>
                     <div className='app-wrapper-content'>
                         <div className='app-navbar'>
-                            < Navbar/>
-                            < SidebarContainer/>
+                            <Navbar/>
+                            <SidebarContainer/>
                         </div>
                         <Routes/>
                     </div>
@@ -66,7 +63,7 @@ const AppContainer = compose(
 const MainApp = (props) => {
     return (
         <>
-            <BrowserRouter>
+            <BrowserRouter basename={"https://ibulavsky.github.io"}>
                 <Provider store={store}>
                     <AppContainer/>
                 </Provider>
