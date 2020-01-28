@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "16742583d18f3a55a6f0f7b341146cf1",
+    "revision": "06ce847e5b024ea589446efbefd5ec13",
     "url": "/social-network-react/index.html"
   },
   {
-    "revision": "abfe0d30d798a9aaae4a",
+    "revision": "bc32c88f921b9d754838",
     "url": "/social-network-react/static/css/main.18e00828.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/social-network-react/static/js/2.ea7e9e2a.chunk.js"
   },
   {
-    "revision": "abfe0d30d798a9aaae4a",
-    "url": "/social-network-react/static/js/main.f77721b4.chunk.js"
+    "revision": "bc32c88f921b9d754838",
+    "url": "/social-network-react/static/js/main.d940eb4c.chunk.js"
   },
   {
     "revision": "fce5f2eed4d9dd741ca7",
