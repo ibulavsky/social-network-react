@@ -2,6 +2,7 @@
   "name": "react-social-network",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://ibulavsky.github.io/social-network-react",
   "dependencies": {
     "axios": "^0.19.0",
     "classnames": "^2.2.6",
@@ -16,6 +17,8 @@
     "reselect": "^4.0.0"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -38,6 +41,7 @@
   },
   "devDependencies": {
     "csscomb": "^4.3.0",
+    "gh-pages": "^2.2.0",
     "prop-types": "latest",
     "redux-devtools": "^3.5.0"
   }

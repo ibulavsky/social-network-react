@@ -18,7 +18,7 @@ const AddMessageForm = (props) => {
                     />
                 </div>
                 <div className={s.buttonWrapper}>
-                    <button className={s.button}>Отправить</button>
+                    <button className={s.button}>Send</button>
                 </div>
             </div>
         </form>

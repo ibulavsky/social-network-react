@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import s from './Dialogs.module.css';
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
-import {Redirect, useLocation, NavLink} from "react-router-dom";
+import {Redirect, useParams, NavLink} from "react-router-dom";
 import {AddMessageFormRedux} from "./Message/SendForm"
 import Preloader from "../common/Preloader/Preloader"
 import {useDispatch, useSelector} from "react-redux"
@@ -10,7 +10,8 @@ import {deleteMessage, getDialogs, sendMessage} from "../../redux/dialogs/dialog
 
 const Dialogs = ({dialogsPage, ...props}) => {
 
-    let {pathname} = useLocation();
+    // let {pathname} = useLocation();
+    const {userId} = useParams()
 
     const [isMessagesWindow, activatingMessagesWindow] = useState(false)
 
@@ -23,11 +24,11 @@ const Dialogs = ({dialogsPage, ...props}) => {
 
     useEffect(() => {
         refreshDialogs()
-    }, [pathname])
+    }, [userId])
 
     const refreshDialogs = () => {
-        if (pathname !== ('/dialogs' || '/dialogs/')) {
-            props.getMessages(pathname.slice(9));
+        if (userId) {
+            props.getMessages(userId);
             activatingMessagesWindow(true)
         } else {
             activatingMessagesWindow(false)
@@ -85,10 +86,7 @@ const Dialogs = ({dialogsPage, ...props}) => {
                         ? <Preloader/>
                         : <div className={s.messages}>
                             <NavLink to={'/dialogs'}>
-                                <button
-                                    // onClick={() => activatingMessagesWindow(false)}
-                                > назад
-                                </button>
+                                <button>back</button>
                             </NavLink>
                             <div>{messagesElements}</div>
                             <div>
