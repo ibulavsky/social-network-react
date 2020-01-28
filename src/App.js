@@ -3,20 +3,15 @@ import './App.css';
 import Header from "./components/Header/HeaderCountainer";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import Ad from "./components/Ad/Ad";
-import Music from "./components/Music/Music";
 import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import SidebarContainer from "./components/Sidebar/SidebarContainer";
-import ProfileContainer from "./components/Profile/ProfileContainer";
-import LoginPage from "./components/Login/Login";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {initializeApp} from "./redux/main/app-reducer";
 import Preloader from "./components/common/Preloader/Preloader";
 import store from "./redux/redux-store"
-import {withSuspense} from "./hoc/withSuspense"
-import DialogsContainer from "./components/Dialogs/DialogsContainer"
 import ModalsPage from "./components/common/ErrorModal/ModalsPage"
+import Routes from "./components/Main/Routes"
 
 const News = React.lazy(() => import('./components/News/News'))
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'))
@@ -51,21 +46,9 @@ class App extends Component {
                             < Navbar/>
                             < SidebarContainer/>
                         </div>
-                        <div className="app-content">
-                            <Switch>
-                                <Route exact path='/' render={() => <Redirect to={"/profile"}/>}/>
-                                <Route path='/dialogs/:userId?' render={() => <DialogsContainer/>}/>
-                                <Route path='/Profile/:userId?' render={() => <ProfileContainer/>}/>
-                                <Route path='/Users' render={withSuspense(UsersContainer)}/>
-                                <Route path='/Login' render={() => <LoginPage/>}/>
-                                <Route path='*'
-                                       render={() => <div style={{width: '525px'}}> ERROR 404. Page Not
-                                           Found</div>}/>
-                            </Switch>
-                        </div>
+                        <Routes/>
                     </div>
-                    {/*< Ad/>*/}
-                    < Footer/>
+                    <Footer/>
                 </div>
             )
         }

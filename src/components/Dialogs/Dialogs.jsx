@@ -7,10 +7,10 @@ import {AddMessageFormRedux} from "./Message/SendForm"
 import Preloader from "../common/Preloader/Preloader"
 import {useDispatch, useSelector} from "react-redux"
 import {deleteMessage, getDialogs, sendMessage} from "../../redux/dialogs/dialogs-thunks"
+import {DIALOGS_PATH, LOG_IN_PATH} from "../Main/Routes"
 
 const Dialogs = ({dialogsPage, ...props}) => {
 
-    // let {pathname} = useLocation();
     const {userId} = useParams()
 
     const [isMessagesWindow, activatingMessagesWindow] = useState(false)
@@ -76,7 +76,7 @@ const Dialogs = ({dialogsPage, ...props}) => {
         />
     )
 
-    if (!props.isAuth) return <Redirect to={'/login'}/>;
+    if (!props.isAuth) return <Redirect to={LOG_IN_PATH}/>;
 
     return (
         <div className={s.dialogs}>
@@ -85,7 +85,7 @@ const Dialogs = ({dialogsPage, ...props}) => {
                     {isMessagesLoading
                         ? <Preloader/>
                         : <div className={s.messages}>
-                            <NavLink to={'/dialogs'}>
+                            <NavLink to={DIALOGS_PATH}>
                                 <button>back</button>
                             </NavLink>
                             <div>{messagesElements}</div>

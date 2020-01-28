@@ -8,3 +8,7 @@
     font-style: italic;
     color: red;
 }
+
+.navLink a {
+    text-decoration: none;
+}

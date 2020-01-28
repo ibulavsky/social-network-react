@@ -2,6 +2,7 @@ import React from 'react'
 import s from "./Users.module.css";
 import {NavLink} from "react-router-dom";
 import Avatar from "../common/UserAvatar/Avatar.jsx"
+import {DIALOGS_PATH, PROFILE_PATH} from "../Main/Routes"
 
 const User = ({user, followingInProgress, unfollow, follow}) => {
 
@@ -13,7 +14,7 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
     return <>
               <span className={s.user}>
                   <div className={s.photoContainer}>
-                  <NavLink to={`profile/${user.id}`}>
+                  <NavLink to={`${PROFILE_PATH}/${user.id}`}>
                                 <Avatar photo={user.photos.small} styled={s.userPhoto}/>
                   </NavLink>
                       {user.followed
@@ -22,7 +23,7 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
                               onClick={unFollowClick}>Unfollow</button>
                           : <button disabled={followingInProgress.some(id => id === user.id)}
                                     onClick={followClick}>Follow</button>}
-                      <NavLink to={`dialogs/${user.id}`}>
+                      <NavLink to={`${DIALOGS_PATH}/${user.id}`}>
                               <button>Dialog</button>
                       </NavLink>
                 </div>

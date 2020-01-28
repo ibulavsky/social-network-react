@@ -5,6 +5,7 @@ import {addPhoto, getStatus, getUserProfile, saveProfile, updateStatus} from "..
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect"
+import {LOG_IN_PATH} from "../Main/Routes"
 
 
 class ProfileContainer extends React.Component {
@@ -14,7 +15,7 @@ class ProfileContainer extends React.Component {
         if (!userId) {
             userId = this.props.authorizedUserId;
             if (!userId) {
-                this.props.history.push('/login')
+                this.props.history.push(LOG_IN_PATH)
             }
         }
         this.props.getUserProfile(userId);

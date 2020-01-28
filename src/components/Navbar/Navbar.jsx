@@ -1,18 +1,19 @@
 import React from 'react';
 import s from './Navbar.module.css'
 import {NavLink} from "react-router-dom";
+import {DIALOGS_PATH, PROFILE_PATH, USERS_PATH} from "../Main/Routes"
 
 const Navbar = () => {
     return (
         <nav className={s.nav}>
             <div className={s.item}>
-                <NavLink to="/profile" activeClassName={s.activeLink}>Profile</NavLink>
+                <NavLink to={PROFILE_PATH} activeClassName={s.activeLink}>Profile</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to="/dialogs" activeClassName={s.activeLink}>Messages</NavLink>
+                <NavLink to={DIALOGS_PATH} activeClassName={s.activeLink}>Messages</NavLink>
             </div>
             <div className={s.item}>
-                <NavLink to='/users' activeClassName={s.activeLink}>Users</NavLink>
+                <NavLink to={USERS_PATH} activeClassName={s.activeLink}>Users</NavLink>
             </div>
         </nav>
     )

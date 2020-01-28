@@ -3,12 +3,13 @@ import s from './DialogItem.module.css';
 import {NavLink} from "react-router-dom";
 import PropTypes from 'prop-types';
 import Avatar from "../../common/UserAvatar/Avatar"
+import {DIALOGS_PATH} from "../../Main/Routes"
 
 const DialogItem = (props) => {
 
     return (
         <div className={s.dialogWrapper}>
-            <NavLink to={`/dialogs/${props.id}`} className={s.dialog}>
+            <NavLink to={`${DIALOGS_PATH}/${props.id}`} className={s.dialog}>
                 <div className={s.avatarWrapper}>
                     <Avatar photo={props.photo} styled={s.avatar}/>
                 </div>
