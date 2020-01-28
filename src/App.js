@@ -3,7 +3,7 @@ import './App.css';
 import Header from "./components/Header/HeaderCountainer";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
-import {BrowserRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
+import {HashRouter, withRouter} from "react-router-dom";
 import SidebarContainer from "./components/Sidebar/SidebarContainer";
 import {connect, Provider} from "react-redux";
 import {compose} from "redux";
@@ -63,11 +63,11 @@ const AppContainer = compose(
 const MainApp = (props) => {
     return (
         <>
-            <BrowserRouter basename={"https://ibulavsky.github.io"}>
+            <HashRouter basename={process.env.PUBLIC_URL}>
                 <Provider store={store}>
                     <AppContainer/>
                 </Provider>
-            </BrowserRouter>
+            </HashRouter>
         </>
     )
 }

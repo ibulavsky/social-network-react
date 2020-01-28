@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {login, logout} from "../../redux/auth/auth-thunks";
 import {Redirect} from "react-router-dom";
 import styles from '../../components/common/FormsControl/FormsControls.module.css'
+import {PROFILE_PATH} from "../Main/Routes"
 
 
 const LoginForm = ({handleSubmit, error, captchaUrl}) => {
@@ -31,7 +32,7 @@ const Login = ({login, isAuth, captchaUrl}) => {
         login(formData.email, formData.password, formData.rememberMe, formData.captcha);
     };
     if (isAuth) {
-        return <Redirect to={"/profile"}/>
+        return <Redirect to={PROFILE_PATH}/>
     } else {
         return <div className={styles.loginPage}>
             <h1 className={styles.loginHeader}>Login</h1>
